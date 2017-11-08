@@ -1,0 +1,37 @@
+extends layout
+
+block js
+    script(src='/javascripts/sgraph.js')
+block content
+    #graph.container
+        .row
+            .col-xs-8
+                #chart-container
+                .form-group
+                    label(for='styles') Style
+                    select#styles.form-control
+                        option(value='column2d')
+                            | 2D Column Chart
+                        option(value='column3d')
+                            | 3D Column Chart
+                        option(value='bar2d')
+                            | 2D Bar Chart
+                        option(value='bar3d')
+                            | 3D Bar Chart
+                        option(value='line')
+                            | Line Chart
+                        option(value='area2d')
+                            | Area 2D Chart
+                        option(value='pie2d')
+                            | 2D Pie Chart
+                        option(value='pie3d')
+                            | 3D Pie Chart
+                        option(value='doughnut2d')
+                            | 2D Donut Chart
+                        option(value='doughnut3d')
+                            | 3D Donut Chart
+                        option(value='pareto2d')
+                            | 2D Pareto Chart
+                        option(value='pareto3d')
+                            | 3D Pareto Chart
+
