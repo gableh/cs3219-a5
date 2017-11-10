@@ -1,19 +1,15 @@
 extends layout
 
-doctype html
-html
-  head
-    title Network | Les miserables
+block content
     style(type='text/css').
       #mynetwork {
         width: 900px;
         height: 900px;
         border: 1px solid lightgray;
       }
-    script(type='text/javascript', src='../../../dist/vis.js')
-    link(href='../../../dist/vis-network.min.css', rel='stylesheet', type='text/css')
-    script(type='text/javascript').
-    script(src='/javascripts/sgraph.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js')
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-network.min.css', rel='stylesheet', type='text/css')
+    script(src='/javascripts/networkgraph.js')
     p
       | Relations between the characters of "Les miserables".
     #mynetwork

@@ -1,6 +1,6 @@
-vis.readyState(function() {
 
 
+$(document).ready(function(){
     // data
     var nodes = [
         {id: 0, "label": "Myriel", "group": 1},
@@ -81,7 +81,7 @@ vis.readyState(function() {
         {id: 75, "label": "Brujon", "group": 4},
         {id: 76, "label": "Mme.Hucheloup", "group": 8}
     ];
-    // create some edges
+// create some edges
     var edges = [
         {"from": 1, "to": 0},
         {"from": 2, "to": 0},
@@ -339,20 +339,17 @@ vis.readyState(function() {
         {"from": 76, "to": 58}
     ];
 
+    var data = {
+        nodes: nodes,
+        edges: edges
+    }
 
-
-
-
-    network_draw = (caption, subcaption, data, plottooltext)
-    {
+    network_draw = function (caption, subcaption, data, plottooltext) {
         // TODO: data parser? returns edges and nodes
 
         // create a network
         var container = document.getElementById('mynetwork');
-        var data = {
-            nodes: nodes,
-            edges: edges
-        };
+        var data = data;
         var options = {
             nodes: {
                 shape: 'dot',
@@ -373,10 +370,6 @@ vis.readyState(function() {
         };
         var network = new vis.Network(container, data, options);
 
-    }
-
-
-
-
-
-})
+    };
+    network_draw("caption","subcaption", data, "blahz");
+});
