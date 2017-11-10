@@ -37,11 +37,16 @@ FusionCharts.ready(function () {
         "headers": {}
     };
 
-    $.ajax(settings).done(function (response) {
+    function parse_response(response) {
         data = []
-        for(var key in response){
+        for (var key in response) {
             data.push({label: key, value: response[key]})
         }
+        return data;
+    }
+
+    $.ajax(settings).done(function (response) {
+        data = parse_response(response);
         singleseries_draw("Captions", "subcaptions", data, "Year :" + " $label\nRevenue : $value").render();
     });
 });

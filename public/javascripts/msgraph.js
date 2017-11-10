@@ -54,7 +54,7 @@ FusionCharts.ready(function () {
         "headers": {}
     };
 
-    $.ajax(settings).done(function (response) {
+    parse_response = function(response) {
         var categories = [{"category": []}];
         var serii = [];
         for (category in response) {
@@ -82,6 +82,13 @@ FusionCharts.ready(function () {
                 }
             }
         }
-        multiseries_draw("Authors", "these are the captions", categories, serii, "Year : $seriesname\nRevenue : $datavalue").render();
+        return {"series": serii, "categories": categories}
+    };
+
+    $.ajax(settings).done(function (response) {
+        data = parse_response(response);
+        categories = data["categories"];
+        series = data["series"];
+        multiseries_draw("Authors", "these are the captions", categories, series, "Year : $seriesname\nRevenue : $datavalue").render();
     });
 });
