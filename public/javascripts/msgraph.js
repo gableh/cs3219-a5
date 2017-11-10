@@ -1,56 +1,5 @@
 FusionCharts.ready(function () {
 
-    var categories = [{
-        "category": [{
-            "label": "2012",
-            "stepSkipped": false,
-            "appliedSmartLabel": true
-        },
-            {
-                "label": "2013",
-                "stepSkipped": false,
-                "appliedSmartLabel": true
-            },
-            {
-                "label": "2014",
-                "stepSkipped": false,
-                "appliedSmartLabel": true
-            },
-            {
-                "label": "2015",
-                "stepSkipped": false,
-                "appliedSmartLabel": true
-            },
-            {
-                "label": "2016",
-                "stepSkipped": false,
-                "appliedSmartLabel": true
-            }
-        ]
-    }];
-
-    var series = [{
-        "seriesname": "iPod",
-        "data": [{
-            "value": "42.63"
-        },
-            {
-                "value": "35.16"
-            },
-            {
-                "value": "26.38"
-            },
-            {
-                "value": "20.38"
-            },
-            {
-                "value": "14.23"
-            }
-        ]
-    }
-
-    ];
-
     multiseries_draw = function (caption, subcaption, categories, series, plottooltext) {
         var chart = new FusionCharts({
             type: 'mscolumn2d',
@@ -63,7 +12,7 @@ FusionCharts.ready(function () {
                     "palette": "1",
                     "caption": caption,
                     "subcaption": subcaption,
-                    "numberprefix": "$",
+                    "numberprefix": null,
                     "showvalues": "0",
                     "legendshadow": "0",
                     "legendborderalpha": "0",
@@ -89,7 +38,6 @@ FusionCharts.ready(function () {
         return chart;
     };
 
-    multiseries_draw("Authors", "these are the captions", categories, series, "Year : $seriesname\nRevenue : $datavalue").render();
     $("tspan").remove();
     $('#styles').change(function () {
         value = $(this).find("option:selected")[0].value;
@@ -97,5 +45,43 @@ FusionCharts.ready(function () {
             "type": value
         });
         $("tspan").remove();
+    });
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://188.166.212.83:8080/api/papers/count?years[]=2011&years[]=2012&years[]=2013&venues[]=arxiv&venues[]=icse&groups[]=years&groups[]=venues",
+        "method": "GET",
+        "headers": {}
+    };
+
+    $.ajax(settings).done(function (response) {
+        var categories = [{"category": []}];
+        var serii = [];
+        for (category in response) {
+            categories[0]["category"].push({
+                "label": category,
+                "stepSkipped": false,
+                "appliedSmartLabel": true
+            });
+            for (series_name in response[category]){
+                var found = false;
+                for (i in serii){
+                    if (serii[i]["seriesname"] == series_name){
+                        found = true;
+                        serii[i]["data"].push({"value": response[category][series_name]});
+                        break;
+                    }
+                }
+                if(!found){
+                    serii.push({
+                        "seriesname": series_name,
+                        "data": [{
+                            "value": response[category][series_name]
+                        }]
+                    });
+                }
+            }
+        }
+        multiseries_draw("Authors", "these are the captions", categories, serii, "Year : $seriesname\nRevenue : $datavalue").render();
     });
 });

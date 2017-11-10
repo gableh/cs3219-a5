@@ -1,22 +1,5 @@
 FusionCharts.ready(function () {
 
-    data = [{
-        label: "Bakersfield Central",
-        value: "880000"
-    }, {
-        label: "Garden Groove harbour",
-        value: "730000"
-    }, {
-        label: "Los Angeles Topanga",
-        value: "590000"
-    }, {
-        label: "Compton-Rancho Dom",
-        value: "520000"
-    }, {
-        label: "Daly City Serramonte",
-        value: "330000"
-    }];
-
     singleseries_draw = function (caption, subcaption, data, plottooltext) {
         var chart = new FusionCharts({
             type: "column2d",
@@ -37,7 +20,6 @@ FusionCharts.ready(function () {
         return chart;
     };
 
-    singleseries_draw("Captions", "subcaptions", data, "Year :" + " $label\nRevenue : $value").render();
     $("tspan").remove();
     $('#styles').change(function () {
         value = $(this).find("option:selected")[0].value;
@@ -45,5 +27,21 @@ FusionCharts.ready(function () {
             "type": value
         });
         $("tspan").remove();
+    });
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://188.166.212.83:8080/api/papers/count?years[]=2013&venues[]=icse&groups[]=venues",
+        "method": "GET",
+        "headers": {}
+    };
+
+    $.ajax(settings).done(function (response) {
+        data = []
+        for(var key in response){
+            data.push({label: key, value: response[key]})
+        }
+        singleseries_draw("Captions", "subcaptions", data, "Year :" + " $label\nRevenue : $value").render();
     });
 });

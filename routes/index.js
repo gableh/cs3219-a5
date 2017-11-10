@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
+/* GET Mulitseries Graph page. */
+router.get('/msgraph', function (req, res, next) {
     res.render('msgraph', {title: 'Express'});
 });
 
