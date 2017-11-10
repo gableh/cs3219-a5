@@ -11,5 +11,10 @@ router.get('/sgraph', function (req, res, next) {
     res.render('sgraph');
 });
 
+/* GET Single Graph page. */
+router.get('/networkgraph', function (req, res, next) {
+    res.render('networkgraph');
+});
+
 
 module.exports = router;
