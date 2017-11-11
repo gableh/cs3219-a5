@@ -19,8 +19,7 @@ FusionCharts.ready(function () {
                     "legendbgcolor": "FFFFFF",
                     "plottooltext": plottooltext,
                     "plotgradientcolor": "",
-                    "bgcolor": bgcolor,
-                    "bgAlpha": 0,
+                    "bgAlpha": "0",
                     "showalternatehgridcolor": "0",
                     "divlinecolor": "CCCCCC",
                     "showcanvasborder": "0",
@@ -56,7 +55,7 @@ FusionCharts.ready(function () {
         "headers": {}
     };
 
-    parse_response = function(response) {
+    msgraph_transform= function(response) {
         var categories = [{"category": []}];
         var serii = [];
         for (category in response) {
@@ -87,10 +86,51 @@ FusionCharts.ready(function () {
         return {"series": serii, "categories": categories}
     };
 
+    multiseries_render_select = function(){
+
+        options = [
+            {
+                value:'mscolumn2d',
+                text: "2D Column Chart"
+            },
+            {
+                value:'mscolumn3d',
+                text: "3D Column Chart"
+            },
+            {
+                value:'msbar2d',
+                text: "2D Bar Chart"
+            },
+            {
+                value:'msbar3d',
+                text: "3D Bar Chart"
+            },
+            {
+                value:'marimekko',
+                text: "Marimekko Chart"
+            }
+    ];
+
+        var styles = $("#styles");
+        //remove all options
+        styles.empty();
+        for (i = 0; i < options.length; i++)
+        {
+            styles.append($('<option>',
+                {
+                    value: options[i]["value"],
+                    text : options[i]["text"]
+                }));
+        }
+
+
+    };
+
     $.ajax(settings).done(function (response) {
-        data = parse_response(response);
+        data = msgraph_transform(response);
         categories = data["categories"];
         series = data["series"];
         multiseries_draw("Authors", "these are the captions", categories, series, "Year : $seriesname\nRevenue : $datavalue", "FFFFFF").render();
+        multiseries_render_select();
     });
 });

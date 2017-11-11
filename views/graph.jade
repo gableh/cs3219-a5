@@ -1,0 +1,75 @@
+extends layout
+
+block js
+    script(src='/javascripts/sgraph.js')
+    script(src='/javascripts/msgraph.js')
+    script(src='/javascripts/graph.js')
+
+block content
+    #graph.container
+        .row
+            .col-xs-11
+                #chart-container
+                .form-group
+                    label(for='styles') Style
+                    select#styles.form-control
+
+    #options.container
+        .row
+            .col-xs-11
+                div.form-inline.query_type.col-xs-6
+                    div.form-group
+                        label(for='query_type') Get
+                        select#query_type.form-control
+                            option(value="top")
+                              | top
+                            option(value="count")
+                              | number of
+                    div.form-group
+                        input#limit.form-control(placeholder="10")
+                    div.form-group
+                        select#reference_type.form-control
+                            option(value="authors")
+                                | authors
+                            option(value="papers")
+                                | papers
+                div.form-inline.col-xs-6.top_form
+                    div.form-group
+                        label() by
+                        select.form-control#sort
+                            option(value="papers")
+                                | papers
+                            option(value="citations")
+                                | citations
+                    div.form-group
+                        select.form-control#top
+                            option(value="")
+                                | .
+                            option(value="venue")
+                                | at venue
+                            option(value="year")
+                                | in year
+                    div.form-group.hidden
+                        input#top-input.form-control(placeholder="E.g 2014 or arxiv")
+
+                div.form-inline.col-xs-6.transition_form.hidden
+                    div.form-group
+                        label() across
+                        select.form-control#count
+                            option(value="venues")
+                                | venues
+                            option(value="years")
+                                | years
+                    div.form-group
+                        input#count-input.form-control(placeholder="E.g 2012,2013,2014 or arxiv")
+                    div.form-group
+                        select#count-ms.form-control
+                            option(value="")
+                                | .
+                            option(value="years")
+                                | in years
+                            option(value="venues")
+                                | at venues
+                    div.form-group.hidden
+                        input#count-ms-input.form-control(placeholder="E.g 2012,2013,2014 or arxiv")
+                button.btn.btn-primary.pull-right#submit() Query!
