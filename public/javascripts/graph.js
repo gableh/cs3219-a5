@@ -54,6 +54,8 @@ $(document).ready(function () {
             limit = $("#limit").val();
             if(isInt(limit)){
                 headers["limit"] = parseInt(limit)
+            } else {
+                headers["limit"] = "10"
             }
             sort = $("#reference_type").find("option:selected")[0].value;
             if(sort=="citations"){
