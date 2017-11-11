@@ -1,6 +1,6 @@
 FusionCharts.ready(function () {
 
-    singleseries_draw = function (caption, subcaption, data, plottooltext, bgcolor) {
+    singleseries_draw = function (xaxisname, yaxisname, data, plottooltext, bgcolor) {
         var chart = new FusionCharts({
             type: "column2d",
             renderAt: 'chart-container',
@@ -9,9 +9,9 @@ FusionCharts.ready(function () {
             dataFormat: "json",
             dataSource: {
                 chart: {
-                    caption: caption,
+                    xAxisName: xaxisname,
+                    yAxisName: yaxisname,
                     bgcolor: bgcolor,
-                    subCaption: subcaption,
                     paletteColors: "#FE3F45,#FE871A,#FEBC41,#98CE2C,#0B99C9,#36B5E4,#d9d9d9,#bdbdbd,#969696,#636363",
                     plotttooltext: plottooltext,
                     bgAlpha: "0",
@@ -35,8 +35,14 @@ FusionCharts.ready(function () {
     function sgraph_transform(response) {
         data = [];
         for (var key in response) {
-            data.push({label: key, value: response[key]})
+            if($.isPlainObject(response[key])){
+                for(key2 in response[key]){
+                    data.push({label: key2, value: response[key][key2]});
+                }
+            }
+            data.push({label: key, value: response[key]});
         }
+        console.log(data);
         return data;
     }
 

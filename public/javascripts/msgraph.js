@@ -1,6 +1,6 @@
 FusionCharts.ready(function () {
 
-    multiseries_draw = function (caption, subcaption, categories, series, plottooltext, bgcolor) {
+    multiseries_draw = function (xaxisname, yaxisname,categories, series, plottooltext, bgcolor) {
         var chart = new FusionCharts({
             type: 'mscolumn2d',
             renderAt: 'chart-container',
@@ -10,8 +10,8 @@ FusionCharts.ready(function () {
             dataSource: {
                 "chart": {
                     "palette": "1",
-                    "caption": caption,
-                    "subcaption": subcaption,
+                    "xAxisName": xaxisname,
+                    "yAxisName": yaxisname,
                     "numberprefix": null,
                     "showvalues": "0",
                     "legendshadow": "0",

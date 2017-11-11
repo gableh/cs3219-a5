@@ -37,8 +37,15 @@ $(document).ready(function () {
     function sgraph_transform(response) {
         data = [];
         for (var key in response) {
-            data.push({label: key, value: response[key]})
+            if($.isPlainObject(response[key])){
+                for(key2 in response[key]){
+                    data.push({label: key, value: response[key][key2]});
+                }
+            } else {
+                data.push({label: key, value: response[key]});
+            }
         }
+        console.log(data);
         return data;
     }
     $("#submit").click(function () {
@@ -49,6 +56,8 @@ $(document).ready(function () {
         url += "/" + query_type;
 
         headers = {};
+        xaxis = "";
+        yaxis = "";
 
         if (query_type == "top") {
             limit = $("#limit").val();
@@ -58,6 +67,8 @@ $(document).ready(function () {
                 headers["limit"] = "10"
             }
             sort = $("#reference_type").find("option:selected")[0].value;
+            yaxisname = $("#sort").find("option:selected")[0].value;
+            console.log(sort);
             if(sort=="citations"){
                 headers["context"] = "citations"
             }
@@ -73,6 +84,8 @@ $(document).ready(function () {
                 }
 
             }
+            xaxis = reference_type.substr(0,1).toUpperCase()+reference_type.substr(1);
+            yaxis = yaxisname.substr(0,1).toUpperCase()+yaxisname.substr(1);
 
         } else if (query_type == "count") {
             count_type = $("#count").find("option:selected")[0].value;
@@ -91,6 +104,8 @@ $(document).ready(function () {
             headers[ms_count_type] = countinput;
             headers["groups"].push(ms_count_type);
 
+            xaxis = query_type.substr(0,1).toUpperCase() + query_type.substr(1);
+            yaxis = count_type.substr(0,1).toUpperCase() + count_type.substr(1);
         }
 
         var settings = {
@@ -105,21 +120,25 @@ $(document).ready(function () {
             single_series = true;
             for(key in response){
                 if($.isPlainObject(response[key])){
-                    single_series = false;
+                    if(Object.keys(response[key]).length >1){
+                        single_series = false;
+                    } else {
+                        console.log(Object.keys(response[key]));
+                    }
                 }
                 break;
             }
             if(single_series){
                 console.log("fsdf");
                 data = sgraph_transform(response);
-                singleseries_draw("", "", data, "", "#FFFFFF").render();
+                singleseries_draw(xaxis, yaxis, data, "", "#FFFFFF").render();
                 singleseries_render_select();
             } else {
                 console.log("fsdffsdf");
                 data = msgraph_transform(response);
                 categories = data["categories"];
                 series = data["series"];
-                multiseries_draw("", "", categories, series, "", "FFFFFF").render();
+                multiseries_draw(xaxis, yaxis, categories, series, "", "FFFFFF").render();
                 multiseries_render_select();
             }
         });
