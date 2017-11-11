@@ -5,7 +5,7 @@ FusionCharts.ready(function () {
             type: 'mscolumn2d',
             renderAt: 'chart-container',
             width: '100%',
-            height: '600',
+            height: '100%',
             dataFormat: 'json',
             dataSource: {
                 "chart": {

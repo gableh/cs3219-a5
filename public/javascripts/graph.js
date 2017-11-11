@@ -138,7 +138,7 @@ $(document).ready(function () {
                 data = msgraph_transform(response);
                 categories = data["categories"];
                 series = data["series"];
-                multiseries_draw(xaxis, yaxis, categories, series, "", "FFFFFF").render();
+                multiseries_draw(yaxis, xaxis, categories, series, "", "FFFFFF").render();
                 multiseries_render_select();
             }
         });
