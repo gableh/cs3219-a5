@@ -1,6 +1,6 @@
 FusionCharts.ready(function () {
 
-    multiseries_draw = function (caption, subcaption, categories, series, plottooltext) {
+    multiseries_draw = function (caption, subcaption, categories, series, plottooltext, bgcolor) {
         var chart = new FusionCharts({
             type: 'mscolumn2d',
             renderAt: 'chart-container',
@@ -19,7 +19,7 @@ FusionCharts.ready(function () {
                     "legendbgcolor": "FFFFFF",
                     "plottooltext": plottooltext,
                     "plotgradientcolor": "",
-                    "bgcolor": "FFFFFF",
+                    "bgcolor": bgcolor,
                     "showalternatehgridcolor": "0",
                     "divlinecolor": "CCCCCC",
                     "showcanvasborder": "0",
@@ -89,6 +89,6 @@ FusionCharts.ready(function () {
         data = parse_response(response);
         categories = data["categories"];
         series = data["series"];
-        multiseries_draw("Authors", "these are the captions", categories, series, "Year : $seriesname\nRevenue : $datavalue").render();
+        multiseries_draw("Authors", "these are the captions", categories, series, "Year : $seriesname\nRevenue : $datavalue", "FFFFFF").render();
     });
 });

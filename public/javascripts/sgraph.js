@@ -1,6 +1,6 @@
 FusionCharts.ready(function () {
 
-    singleseries_draw = function (caption, subcaption, data, plottooltext) {
+    singleseries_draw = function (caption, subcaption, data, plottooltext, bgcolor) {
         var chart = new FusionCharts({
             type: "column2d",
             renderAt: 'chart-container',
@@ -10,6 +10,7 @@ FusionCharts.ready(function () {
             dataSource: {
                 chart: {
                     caption: caption,
+                    bgcolor: bgcolor,
                     subCaption: subcaption,
                     paletteColors: "#FE3F45,#FE871A,#FEBC41,#98CE2C,#0B99C9,#36B5E4,#d9d9d9,#bdbdbd,#969696,#636363",
                     plotttooltext: plottooltext
@@ -47,6 +48,6 @@ FusionCharts.ready(function () {
 
     $.ajax(settings).done(function (response) {
         data = parse_response(response);
-        singleseries_draw("Captions", "subcaptions", data, "Year :" + " $label\nRevenue : $value").render();
+        singleseries_draw("Captions", "subcaptions", data, "Year :" + " $label\nRevenue : $value", "FFFFFF").render();
     });
 });
