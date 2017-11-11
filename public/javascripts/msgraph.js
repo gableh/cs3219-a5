@@ -20,6 +20,7 @@ FusionCharts.ready(function () {
                     "plottooltext": plottooltext,
                     "plotgradientcolor": "",
                     "bgcolor": bgcolor,
+                    "bgAlpha": 0,
                     "showalternatehgridcolor": "0",
                     "divlinecolor": "CCCCCC",
                     "showcanvasborder": "0",
@@ -29,6 +30,7 @@ FusionCharts.ready(function () {
                     "captionpadding": "30",
                     "linethickness": "3",
                     "yaxisvaluespadding": "15",
+
 
                 },
                 "categories": categories,

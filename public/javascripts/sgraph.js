@@ -13,7 +13,8 @@ FusionCharts.ready(function () {
                     bgcolor: bgcolor,
                     subCaption: subcaption,
                     paletteColors: "#FE3F45,#FE871A,#FEBC41,#98CE2C,#0B99C9,#36B5E4,#d9d9d9,#bdbdbd,#969696,#636363",
-                    plotttooltext: plottooltext
+                    plotttooltext: plottooltext,
+                    bgAlpha: 0,
                 },
                 data: data
             }
