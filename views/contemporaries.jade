@@ -21,29 +21,24 @@ block content
                     div.form-group
                         label(for='query_type') Get
                         select#query_type.form-control
-                            option(value="top")
-                                | top
                             option(value="count")
                                 | number of
-                    div.form-group
-                        input#limit.form-control(placeholder="10")
                     div.form-group
                         select#reference_type.form-control
                             option(value="authors")
                                 | authors
                             option(value="papers")
                                 | papers
-
-                div.form-inline.col-xs-6.hidden
                     div.form-group
                         label() across
                         select.form-control#count
-                            option(value="venues")
-                                | at venues
                             option(value="years")
                                 | years
+                            option(value="venues")
+                                | venues
+
                     div.form-group
-                        input#count-input.form-control(placeholder="E.g 2012,20")
+                        input#count-input.form-control(placeholder="E.g 2012,2013,2014 or arxiv")
                     div.form-group
                         select#count-ms.form-control
                             option(value="")

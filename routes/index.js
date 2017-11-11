@@ -21,6 +21,18 @@ router.get('/sgraph', function (req, res, next) {
 router.get('/networkgraph', function (req, res, next) {
     res.render('networkgraph');
 });
+/* GET Single Graph page. */
+router.get('/contemporaries', function (req, res, next) {
+    res.render('contemporaries');
+});
+/* GET Single Graph page. */
+router.get('/transitions', function (req, res, next) {
+    res.render('transitions');
+});
+/* GET Single Graph page. */
+router.get('/top', function (req, res, next) {
+    res.render('top');
+});
 
 
 module.exports = router;
