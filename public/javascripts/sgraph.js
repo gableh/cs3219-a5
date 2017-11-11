@@ -115,12 +115,6 @@ FusionCharts.ready(function () {
         "headers": {}
     };
 
-    $.ajax(settings).done(function (response) {
-        data = sgraph_transform(response);
-        singleseries_draw("Captions", "subcaptions", data, "Year :" + " $label\nRevenue : $value", "FFFFFF").render();
-        singleseries_render_select()
-    });
-
     var settings = {
         "async": true,
         "crossDomain": true,

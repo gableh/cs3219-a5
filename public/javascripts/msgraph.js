@@ -125,12 +125,4 @@ FusionCharts.ready(function () {
 
 
     };
-
-    $.ajax(settings).done(function (response) {
-        data = msgraph_transform(response);
-        categories = data["categories"];
-        series = data["series"];
-        multiseries_draw("Authors", "these are the captions", categories, series, "Year : $seriesname\nRevenue : $datavalue", "FFFFFF").render();
-        multiseries_render_select();
-    });
 });
