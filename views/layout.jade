@@ -13,7 +13,11 @@ html
         script(type='text/javascript', src='https://rawgit.com/fusioncharts/fusioncharts-jquery-plugin/feature/node-commonjs-support/package/fusioncharts-jquery-plugin.js')
         script.
             window.addEventListener('message', function (event) {
-                $("body").attr("style", event.data);
+                for(key in event.data){
+                    for(style in event.data[key]){
+                        $(key).css(style, event.data[key][style]);
+                    }
+                }
 
             });
         block js
