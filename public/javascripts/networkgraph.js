@@ -59,7 +59,7 @@ $(document).ready(function(){
         for (var i = 0; i < nodes.length; i++) {
             node = nodes[i];
             title = '<p style="max-width:300px"><p>Title: '+ node["title"] +'</p><p>ID: '+node["id"]+'</p> <p >Authors: '+node["authors"].join(",")+'</p> <p>Year:'+node["year"]+'</p></p>';
-            parsed_nodes.push({"id": node["id"], "title": title});
+            parsed_nodes.push({"id": node["id"], "title": title, "group": parseInt(node["distance"])});
         }
         for (var i = 0; i < edges.length; i++) {
             edge = edges[i];
