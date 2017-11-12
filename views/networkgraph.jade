@@ -10,15 +10,17 @@ block content
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js')
     link(href='https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-network.min.css', rel='stylesheet', type='text/css')
     script(src='/javascripts/networkgraph.js')
-    .container
-        #mynetwork.col-xs-11
+    #graph.container
+        .row
+            .col-xs-11
+                #mynetwork
     #options.container
         .row
             .col-xs-11
                 div.form-inline.query_type
                     div.form-group
                         label() Get Citation Web of
-                        input#center-input.form-control(placeholder="Low-density parity check codes over GF(q)", size = 50)
+                        input#center-input.form-control(placeholder="Low-density parity check codes over GF(q)")
                     div.form-group
                         label() with Distance
                         input#distance-input.form-control(placeholder="2")
