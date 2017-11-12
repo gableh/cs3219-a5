@@ -14,6 +14,7 @@ html
         script.
             window.addEventListener('message', function (event) {
                 data = $.parseJSON(event.data)
+                console.log(data)
                 for(key in data){
 
                     for(style in data[key]){
