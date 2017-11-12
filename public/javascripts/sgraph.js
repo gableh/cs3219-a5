@@ -15,7 +15,11 @@ FusionCharts.ready(function () {
                     paletteColors: "#FE3F45,#FE871A,#FEBC41,#98CE2C,#0B99C9,#36B5E4,#d9d9d9,#bdbdbd,#969696,#636363",
                     plotttooltext: plottooltext,
                     bgAlpha: "0",
-                    canvasBgAlpha:"0"
+                    canvasBgAlpha:"0",
+                    canvasborderthickness: "0",
+                    showcanvasborder: "0",
+                    showBorder: "0",
+                    canvasborderalpha: "0",
                 },
                 data: data
             }
