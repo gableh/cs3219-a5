@@ -26,7 +26,7 @@ router.get('/contemporary', function (req, res, next) {
     res.render('contemporaries');
 });
 /* GET Single Graph page. */
-router.get('/transitions', function (req, res, next) {
+router.get('/transition', function (req, res, next) {
     res.render('transitions');
 });
 /* GET Single Graph page. */
