@@ -13,8 +13,8 @@ html
         script(type='text/javascript', src='https://rawgit.com/fusioncharts/fusioncharts-jquery-plugin/feature/node-commonjs-support/package/fusioncharts-jquery-plugin.js')
         script.
             window.addEventListener('message', function (event) {
+                console.log(event.data)
                 data = $.parseJSON(event.data)
-                console.log(data)
                 for(key in data){
 
                     for(style in data[key]){
