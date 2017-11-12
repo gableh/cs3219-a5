@@ -49,6 +49,7 @@ $(document).ready(function () {
         return data;
     }
     $("#submit").click(function () {
+        $("#loader").removeClass("hidden");
         url = "http://188.166.212.83:8080/api";
         reference_type = $("#reference_type").find("option:selected")[0].value;
         url += "/" + reference_type;
@@ -131,8 +132,10 @@ $(document).ready(function () {
             "data": headers
         };
         $.ajax(settings).fail(function(){
+            $("#loader").addClass("hidden");
             alert("Invalid Query, Please check your params");
         }).done(function (response) {
+            $("#loader").addClass("hidden");
             console.log(response);
             if(Object.keys(response) ==0){
                 alert("No data found for this query.");

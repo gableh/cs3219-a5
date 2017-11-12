@@ -69,6 +69,7 @@ $(document).ready(function(){
     }
 
     $("#submit").click(function () {
+        $("#loader").removeClass("hidden");
         url = "http://188.166.212.83:8080/api/papers/network";
         headers = {};
 
@@ -86,8 +87,10 @@ $(document).ready(function(){
             "data": headers
         };
         $.ajax(settings).fail(function(){
+            $("#loader").addClass("hidden");
             alert("Invalid Query, Please check your params");
         }).done(function (response) {
+            $("#loader").addClass("hidden");
             data = network_transform(response);
             network_draw("", "", data, "");
         });
