@@ -18,6 +18,7 @@ $(document).ready(function(){
         if(isInt(limit)){
             headers["limit"] = parseInt(limit)
         } else {
+            alert("No limit set or limit is not an integer. Defaulting to 100.");
             headers["limit"] = "100"
         }
         sort = $("#reference_type").find("option:selected")[0].value;
