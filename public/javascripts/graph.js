@@ -70,7 +70,7 @@ $(document).ready(function () {
             sort = $("#reference_type").find("option:selected")[0].value;
             yaxisname = $("#sort").find("option:selected")[0].value;
             console.log(sort);
-            if(sort=="citations"){
+            if(sort=="citations" || yaxisname == "citations"){
                 headers["context"] = "citations"
             }
             topvalue = $("#top").find("option:selected")[0].value;

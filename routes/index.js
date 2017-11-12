@@ -33,6 +33,12 @@ router.get('/transition', function (req, res, next) {
 router.get('/top', function (req, res, next) {
     res.render('top');
 });
-
-
+/* GET sample js page. */
+router.get('/sample', function (req, res, next) {
+    res.render('top');
+});
+/* GET wordcloud page. */
+router.get('/wordcloud', function (req, res, next) {
+    res.render('wordcloud');
+});
 module.exports = router;
