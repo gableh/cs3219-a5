@@ -20,6 +20,7 @@ FusionCharts.ready(function () {
                     "plottooltext": plottooltext,
                     "plotgradientcolor": "",
                     "bgAlpha": "0",
+                    "canvasBgAlpha":"0",
                     "showalternatehgridcolor": "0",
                     "divlinecolor": "CCCCCC",
                     "showcanvasborder": "0",

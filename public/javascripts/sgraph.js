@@ -11,10 +11,11 @@ FusionCharts.ready(function () {
                 chart: {
                     xAxisName: xaxisname,
                     yAxisName: yaxisname,
-                    bgcolor: bgcolor,
+                    bgcolor: "#123123",
                     paletteColors: "#FE3F45,#FE871A,#FEBC41,#98CE2C,#0B99C9,#36B5E4,#d9d9d9,#bdbdbd,#969696,#636363",
                     plotttooltext: plottooltext,
                     bgAlpha: "0",
+                    canvasBgAlpha:"0"
                 },
                 data: data
             }
