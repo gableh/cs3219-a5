@@ -22,7 +22,7 @@ router.get('/networkgraph', function (req, res, next) {
     res.render('networkgraph');
 });
 /* GET Single Graph page. */
-router.get('/contemporaries', function (req, res, next) {
+router.get('/contemporary', function (req, res, next) {
     res.render('contemporaries');
 });
 /* GET Single Graph page. */
