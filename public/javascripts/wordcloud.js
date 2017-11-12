@@ -55,7 +55,7 @@ $(document).ready(function(){
             }
             d3.wordcloud()
                 .selector('#chart-container')
-                .size([parseInt($("#chart-container").width()), 600])
+                .size([parseInt($("#chart-container").width()), 450])
                 .words(words).font("Impact")
                 .fill(d3.scale.ordinal().range(colors))
                 .start();
