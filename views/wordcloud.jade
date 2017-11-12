@@ -1,6 +1,7 @@
 extends layout
 
 block js
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js')
     script(src='javascripts/lib/d3/d3.js')
     script(src='javascripts/lib/d3/d3.layout.cloud.js')
     script(src='javascripts/d3.wordcloud.js')
@@ -9,44 +10,42 @@ block js
 block content
     #graph.container
         .row
-            .col-xs-11
-                #chart-container
+            #chart-container
 
     #options.container
         .row
-            .col-xs-11
-                div.form-inline.query_type
-                    div.form-group
-                        label(for='query_type') Get
-                        select#query_type.form-control
-                            option(value="top")
-                                | top
-                            option(value="count")
-                                | number of
-                    div.form-group
-                        input#limit.form-control(placeholder="100")
-                    div.form-group
-                        select#reference_type.form-control
-                            option(value="authors")
-                                | authors
-                            option(value="papers")
-                                | papers
-                    div.form-group
-                        label() by
-                        select.form-control#sort
-                            option(value="papers")
-                                | papers
-                            option(value="citations")
-                                | citations
-                    div.form-group
-                        select.form-control#top
-                            option(value="")
-                                | .
-                            option(value="venue")
-                                | at venue
-                            option(value="year")
-                                | in year
-                    div.form-group
-                        input#top-input.form-control(placeholder="E.g 2014 or arxiv")
+            div.form-inline.query_type
+                div.form-group
+                    label(for='query_type') Get
+                    select#query_type.form-control
+                        option(value="top")
+                            | top
+                div.form-group
+                    input#limit.form-control(placeholder="100")
+                div.form-group
+                    select#reference_type.form-control
+                        option(value="authors")
+                            | authors
+                        option(value="papers")
+                            | papers
+                        option(value="papers")
+                            | papers
+                div.form-group
+                    label() by
+                    select.form-control#sort
+                        option(value="papers")
+                            | papers
+                        option(value="citations")
+                            | citations
+                div.form-group
+                    select.form-control#top
+                        option(value="")
+                            | .
+                        option(value="venue")
+                            | at venue
+                        option(value="year")
+                            | in year
+                div.form-group
+                    input#top-input.form-control(placeholder="E.g 2014 or arxiv")
 
-                    button.btn.btn-primary#submit() Query!
+                button.btn.btn-primary#submit() Query!

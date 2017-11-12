@@ -47,15 +47,17 @@ $(document).ready(function(){
             $("#loader").addClass("hidden");
             alert("Invalid Query, Please check your params");
         }).done(function (response) {
+            var colors = [ '#FE3F45', '#FE871A', '#FEBC41', '#98CE2C', '#0B99C9', '#36B5E4', '#d9d9d9', '#bdbdbd', '#969696', '#636363' ];
             words = []
             $("#loader").addClass("hidden");
             for(key in response){
                 words.push({"text": key, "size": parseInt(response[key])});
             }
             d3.wordcloud()
-                .size([800, 400])
                 .selector('#chart-container')
-                .words(words)
+                .size([parseInt($("#chart-container").width()), 600])
+                .words(words).font("Impact")
+                .fill(d3.scale.ordinal().range(colors))
                 .start();
         });
 
