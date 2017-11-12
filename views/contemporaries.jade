@@ -11,8 +11,10 @@ block content
             .col-xs-11
                 #chart-container
                 .form-group
-                    label(for='styles') Style
+                    label(for='styles') Graph Types
                     select#styles.form-control
+                        option(value="")
+                            | Graph types are displayed only after query completes
 
     #options.container
         .row
@@ -50,4 +52,4 @@ block content
 
                     div.form-group
                         input#count-ms-input.form-control(placeholder="E.g 2012,2013,2014 or arxiv")
-                    button.btn.btn-primary.pull-right#submit() Query!
+                    button.btn.btn-primary#submit() Query!

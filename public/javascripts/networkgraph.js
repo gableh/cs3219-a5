@@ -9,6 +9,9 @@ $(document).ready(function(){
         var container = document.getElementById('mynetwork');
         var data = data;
         var options = {
+            interaction: {
+                tooltipDelay: 0
+            },
             nodes: {
                 shape: 'dot',
                 size: 16
@@ -55,14 +58,12 @@ $(document).ready(function(){
         parsed_edges = [];
         for (var i = 0; i < nodes.length; i++) {
             node = nodes[i];
-            title = '<p style="max-width:300px"><p>Title: {0}</p>' +
-                ' <p>ID: {1}</p> <p >Authors: {2}</p> <p>Year:{3}</p>' +
-                ' </p>'.formatUnicorn(node["title"], node["id"], node["authors"].join(","), node["year"]);
+            title = '<p style="max-width:300px"><p>Title: '+ node["title"] +'</p><p>ID: '+node["id"]+'</p> <p >Authors: '+node["authors"].join(",")+'</p> <p>Year:'+node["year"]+'</p></p>';
             parsed_nodes.push({"id": node["id"], "title": title});
         }
         for (var i = 0; i < edges.length; i++) {
             edge = edges[i];
-            parsed_edges.push({"from": edge["source"], "to": edge["target"]});
+            parsed_edges.push({"from": edge["source"], "to": edge["target"], "arrows":"from"});
         }
         return {"nodes": parsed_nodes, "edges": parsed_edges}
     }
@@ -92,4 +93,5 @@ $(document).ready(function(){
         });
 
     });
+    $("#submit").click();
 });
