@@ -11,5 +11,18 @@ block content
     link(href='https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-network.min.css', rel='stylesheet', type='text/css')
     script(src='/javascripts/networkgraph.js')
     p
-      | Relations between the characters of "Les miserables".
-    #mynetwork
+      | Citation Web
+    .container
+        #mynetwork.col-xs-11
+    #options.container
+        .row
+            .col-xs-11
+                div.form-inline.query_type
+                    div.form-group
+                        label() Get Citation Web of
+                        input#center-input.form-control(placeholder="Low-density parity check codes over GF(q)", size = 50)
+                    div.form-group
+                        label() with Distance
+                        input#distance-input.form-control(placeholder="2")
+                    button.btn.btn-primary.pull-right#submit() Query!
+

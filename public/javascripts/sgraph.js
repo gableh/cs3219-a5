@@ -156,5 +156,15 @@ FusionCharts.ready(function () {
     $.ajax(settings).done(function (response) {
         console.log(response);
     });
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://188.166.212.83:8080/api/papers/network?center=Low-density%20parity%20check%20codes%20over%20GF%28q%29&length=2",
+        "method": "GET",
+        "headers": {}
+    }
 
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
 });
