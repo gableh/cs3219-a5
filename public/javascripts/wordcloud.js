@@ -51,7 +51,15 @@ $(document).ready(function(){
             words = []
             $("#loader").addClass("hidden");
             for(key in response){
-                words.push({"text": key, "size": parseInt(response[key])});
+                if($.isPlainObject(response[key])) {
+                    for(key2 in response[key]){
+                        words.push({"text": key2, "size": parseInt(response[key][key2])});
+                    }
+                } else {
+                    words.push({"text": key, "size": parseInt(response[key])});
+                }
+            }
+            for(key in response){
             }
             $("svg").remove();
             d3.wordcloud()
