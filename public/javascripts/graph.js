@@ -89,7 +89,22 @@ $(document).ready(function () {
 
         } else if (query_type == "count") {
             count_type = $("#count").find("option:selected")[0].value;
-            countinput = $("#count-input").val().split(",");
+            countinput = $("#count-input").val();
+            if(countinput.indexOf("-") > -1 && count_type == "years"){
+                range = countinput.split("-");
+                for (var i = 0; i < range.length; i++) {
+                    range[i] = range[i].trim();
+                }
+                start = range[0];
+                end = range[1];
+                years = []
+                for(var i = parseInt(start); i<= parseInt(end); i++){
+                    years.push(i.toString());
+                }
+                countinput = years;
+            } else {
+                countinput = countinput.split(",");
+            }
             for (var i = 0; i < countinput.length; i++) {
                 countinput[i] = countinput[i].trim();
             }
@@ -115,7 +130,9 @@ $(document).ready(function () {
             "type": "GET",
             "data": headers
         };
-        $.ajax(settings).done(function (response) {
+        $.ajax(settings).fail(function(){
+            alert("Invalid Query, Please check your params");
+        }).done(function (response) {
             console.log(response);
             single_series = true;
             for(key in response){
@@ -131,7 +148,7 @@ $(document).ready(function () {
             if(single_series){
                 console.log("fsdf");
                 data = sgraph_transform(response);
-                singleseries_draw(xaxis, yaxis, data, "", "#FFFFFF").render();
+                singleseries_draw(yaxis, xaxis, data, "", "#FFFFFF").render();
                 singleseries_render_select();
             } else {
                 console.log("fsdffsdf");
