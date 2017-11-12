@@ -53,6 +53,7 @@ $(document).ready(function(){
             for(key in response){
                 words.push({"text": key, "size": parseInt(response[key])});
             }
+            $("svg").remove();
             d3.wordcloud()
                 .selector('#chart-container')
                 .size([parseInt($("#chart-container").width()), 450])
