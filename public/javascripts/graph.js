@@ -134,6 +134,9 @@ $(document).ready(function () {
             alert("Invalid Query, Please check your params");
         }).done(function (response) {
             console.log(response);
+            if(Object.keys(response) ==0){
+                alert("No data found for this query.");
+            }
             single_series = true;
             for(key in response){
                 if($.isPlainObject(response[key])){
