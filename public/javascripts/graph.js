@@ -1,7 +1,6 @@
 $(document).ready(function () {
     $("#query_type").change(function () {
         value = $(this).find("option:selected")[0].value;
-        console.log(value);
         if (value == "top") {
             $(".top_form").removeClass("hidden");
             $("#limit").parent().removeClass("hidden");
@@ -14,7 +13,6 @@ $(document).ready(function () {
     });
     $("#top").change(function () {
         value = $(this).find("option:selected")[0].value;
-        console.log(value);
         if (value == "") {
             $("#top-input").parent().addClass("hidden");
         } else{
@@ -23,7 +21,6 @@ $(document).ready(function () {
     });
     $("#count-ms").change(function () {
         value = $(this).find("option:selected")[0].value;
-        console.log(value);
         if (value == "") {
             $("#count-ms-input").parent().addClass("hidden");
         } else{
@@ -45,7 +42,6 @@ $(document).ready(function () {
                 data.push({label: key, value: response[key]});
             }
         }
-        console.log(data);
         return data;
     }
     $("#submit").click(function () {
@@ -70,7 +66,6 @@ $(document).ready(function () {
             }
             sort = $("#reference_type").find("option:selected")[0].value;
             yaxisname = $("#sort").find("option:selected")[0].value;
-            console.log(sort);
             if(sort=="citations" || yaxisname == "citations"){
                 headers["context"] = "citations"
             }
@@ -137,7 +132,6 @@ $(document).ready(function () {
             alert("Invalid Query, Please check your params");
         }).done(function (response) {
             $("#loader").addClass("hidden");
-            console.log(response);
             if(Object.keys(response) ==0){
                 alert("No data found for this query.");
             }
@@ -146,19 +140,15 @@ $(document).ready(function () {
                 if($.isPlainObject(response[key])){
                     if(Object.keys(response[key]).length >1){
                         single_series = false;
-                    } else {
-                        console.log(Object.keys(response[key]));
                     }
                 }
                 break;
             }
             if(single_series){
-                console.log("fsdf");
                 data = sgraph_transform(response);
                 singleseries_draw(yaxis, xaxis, data, "", "#FFFFFF").render();
                 singleseries_render_select();
             } else {
-                console.log("fsdffsdf");
                 data = msgraph_transform(response);
                 categories = data["categories"];
                 series = data["series"];

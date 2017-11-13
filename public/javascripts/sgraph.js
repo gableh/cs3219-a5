@@ -47,7 +47,6 @@ FusionCharts.ready(function () {
             }
             data.push({label: key, value: response[key]});
         }
-        console.log(data);
         return data;
     }
 
@@ -118,58 +117,4 @@ FusionCharts.ready(function () {
 
 
     };
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "http://188.166.212.83:8080/api/papers/count?years[]=2013&venues[]=icse&groups[]=venues",
-        "method": "GET",
-        "headers": {}
-    };
-
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "http://188.166.212.83:8080/api/authors/count?venues[]=arxiv&venues[]=icse&start=2013&end=2014",
-        "method": "GET",
-        "headers": {}
-    };
-
-    $.ajax(settings).done(function (response) {
-        console.log("Transition");
-        console.log(response);
-    });
-
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "http://188.166.212.83:8080/api/papers/count?venues[]=arxiv",
-        "method": "GET",
-        "headers": {}
-    }
-
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "http://188.166.212.83:8080/api/authors/count?venues[]=arxiv",
-        "method": "GET",
-        "headers": {}
-    }
-
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "http://188.166.212.83:8080/api/papers/network?center=Low-density%20parity%20check%20codes%20over%20GF%28q%29&length=2",
-        "method": "GET",
-        "headers": {}
-    }
-
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });
 });
